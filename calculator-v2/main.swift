@@ -6,17 +6,6 @@
 //  Copyright © 2016 Nick Nordale. All rights reserved.
 //
 
-// use tuples to represent x/y point pairs
-// create two functions for adding and subtracting points
-//   (1,2) + (3,4) = (4,6)
-//   (1,2) - (3,4) = (-2,-2)
-// now use Dictionaries to represent points
-//   "x" is the x coordinate, "y" is the y coordinate
-// create two functions for adding and subtracting points
-//   (1,2) + (3,4) = (4,6)
-//   (1,2) - (3,4) = (-2,-2)
-// handle dictionaries without "x" or "y" without crashing
-// handle dictionaries with Double values without crashing
 
 import Foundation
 
@@ -75,3 +64,52 @@ func avg(arrIn : [Int]) -> Int {
 func math2(arrIn : [Int], op : ([Int]) -> Int) -> Int {
     return op(arrIn)
 }
+
+func addPoints(a : (Int, Int), b : (Int, Int)) -> (Int, Int) {
+    return (a.0 + b.0, a.1 + b.1)
+}
+
+func subtractPoints(a : (Int, Int), b : (Int, Int)) -> (Int, Int) {
+    return (a.0 - b.0, a.1 - b.1)
+}
+
+var pointA = [
+    "x": 1,
+    "y": 2
+]
+
+var pointB = [
+    "x": 3,
+    "y": 4
+]
+
+// handle dictionaries without "x" or "y" without crashing
+// handle dictionaries with Double values without crashing
+
+func addPoints2(a : Dictionary<String, Int>, b : Dictionary<String, Int>) -> Dictionary<String, Int> {
+    return [
+        "x": ((a["x"] != nil) ? a["x"]! : 0) + ((b["x"] != nil) ? b["x"]! : 0),
+        "y": ((a["y"] != nil) ? a["y"]! : 0) + ((b["y"] != nil) ? b["y"]! : 0)
+    ]
+}
+
+func subtractPoints2(a : Dictionary<String, Int>, b : Dictionary<String, Int>) -> Dictionary<String, Int> {
+    return [
+        "x": ((a["x"] != nil) ? a["x"]! : 0) - ((b["x"] != nil) ? b["x"]! : 0),
+        "y": ((a["y"] != nil) ? a["y"]! : 0) - ((b["y"] != nil) ? b["y"]! : 0)
+    ]
+}
+
+print(addPoints2(pointA, b: pointB))
+print(subtractPoints2(pointA, b: pointB))
+
+
+
+
+
+
+
+
+
+
+
