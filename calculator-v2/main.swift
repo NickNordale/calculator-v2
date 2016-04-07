@@ -73,30 +73,39 @@ func subtractPoints(a : (Int, Int), b : (Int, Int)) -> (Int, Int) {
     return (a.0 - b.0, a.1 - b.1)
 }
 
-var pointA = [
-    "x": 1,
-    "y": 2
-]
+var pointA = [String: AnyObject]()
+var pointB = [String: AnyObject]()
 
-var pointB = [
-    "x": 3,
-    "y": 4
-]
+pointA["x"] = 1
+pointA["y"] = 2
+
+pointB["x"] = 3
+pointB["y"] = 4
 
 // handle dictionaries without "x" or "y" without crashing
 // handle dictionaries with Double values without crashing
 
-func addPoints2(a : Dictionary<String, Int>, b : Dictionary<String, Int>) -> Dictionary<String, Int> {
+func addPoints2(a : Dictionary<String, AnyObject>, b : Dictionary<String, AnyObject>) -> Dictionary<String, Int> {
+    let xVal1 = (Int)((a["x"] != nil) ? a["x"]! as! NSNumber : 0)
+    let xVal2 = (Int)((b["x"] != nil) ? b["x"]! as! NSNumber : 0)
+    let yVal1 = (Int)((a["y"] != nil) ? a["y"]! as! NSNumber : 0)
+    let yVal2 = (Int)((b["y"] != nil) ? b["y"]! as! NSNumber : 0)
+    
     return [
-        "x": ((a["x"] != nil) ? a["x"]! : 0) + ((b["x"] != nil) ? b["x"]! : 0),
-        "y": ((a["y"] != nil) ? a["y"]! : 0) + ((b["y"] != nil) ? b["y"]! : 0)
+        "x": xVal1 + xVal2,
+        "y": yVal1 + yVal2,
     ]
 }
 
-func subtractPoints2(a : Dictionary<String, Int>, b : Dictionary<String, Int>) -> Dictionary<String, Int> {
+func subtractPoints2(a : Dictionary<String, AnyObject>, b : Dictionary<String, AnyObject>) -> Dictionary<String, Int> {
+    let xVal1 = (Int)((a["x"] != nil) ? a["x"]! as! NSNumber : 0)
+    let xVal2 = (Int)((b["x"] != nil) ? b["x"]! as! NSNumber : 0)
+    let yVal1 = (Int)((a["y"] != nil) ? a["y"]! as! NSNumber : 0)
+    let yVal2 = (Int)((b["y"] != nil) ? b["y"]! as! NSNumber : 0)
+    
     return [
-        "x": ((a["x"] != nil) ? a["x"]! : 0) - ((b["x"] != nil) ? b["x"]! : 0),
-        "y": ((a["y"] != nil) ? a["y"]! : 0) - ((b["y"] != nil) ? b["y"]! : 0)
+        "x": xVal1 - xVal2,
+        "y": yVal1 - yVal2,
     ]
 }
 
