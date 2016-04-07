@@ -6,8 +6,10 @@
 //  Copyright © 2016 Nick Nordale. All rights reserved.
 //
 
-
 import Foundation
+
+
+// Build a calculator
 
 func add(first : Int, second : Int) -> Int {
     return first + second
@@ -28,6 +30,9 @@ func divide(first : Int, second : Int) -> Int {
 func math(first : Int, second : Int, op : (Int, Int) -> Int) -> Int {
     return op(first, second)
 }
+
+
+// Array fun
 
 func addArr(arrIn : [Int]) -> Int {
     var out = 0
@@ -65,6 +70,9 @@ func math2(arrIn : [Int], op : ([Int]) -> Int) -> Int {
     return op(arrIn)
 }
 
+
+// Points - Tuples
+
 func addPoints(a : (Int, Int), b : (Int, Int)) -> (Int, Int) {
     return (a.0 + b.0, a.1 + b.1)
 }
@@ -73,17 +81,8 @@ func subtractPoints(a : (Int, Int), b : (Int, Int)) -> (Int, Int) {
     return (a.0 - b.0, a.1 - b.1)
 }
 
-var pointA = [String: AnyObject]()
-var pointB = [String: AnyObject]()
 
-pointA["x"] = 1
-pointA["y"] = 2
-
-pointB["x"] = 3
-pointB["y"] = 4
-
-// handle dictionaries without "x" or "y" without crashing
-// handle dictionaries with Double values without crashing
+// Points - Dictionaries
 
 func addPoints2(a : Dictionary<String, AnyObject>, b : Dictionary<String, AnyObject>) -> Dictionary<String, Int> {
     let xVal1 = (Int)((a["x"] != nil) ? a["x"]! as! NSNumber : 0)
@@ -108,17 +107,3 @@ func subtractPoints2(a : Dictionary<String, AnyObject>, b : Dictionary<String, A
         "y": yVal1 - yVal2,
     ]
 }
-
-print(addPoints2(pointA, b: pointB))
-print(subtractPoints2(pointA, b: pointB))
-
-
-
-
-
-
-
-
-
-
-
